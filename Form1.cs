@@ -12,9 +12,19 @@ namespace Laboratorio3
 {
     public partial class Form1 : Form
     {
+        List<Propiedades> propiedades = new List<Propiedades>();
+        List<Propietarios> propietarios = new List<Propietarios>();
+
+
         public Form1()
         {
             InitializeComponent();
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+
         }
     }
 }
