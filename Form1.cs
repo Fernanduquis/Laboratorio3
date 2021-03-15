@@ -91,9 +91,9 @@ namespace Laboratorio3
         private void button1_Click_1(object sender, EventArgs e)
         {
             // int mayor = propietarios.Max(x => x.NombrePropietario);
-            int mayor = propiedades.Max(k => k.NumeroCasa1);
-            
-
+            int mayor = propiedades.Max(k => k.CuotaMantenimiento1);
+            int menor = propiedades.Min(X => X.CuotaMantenimiento1);
+            textBoxbaja.Text = menor.ToString();
             textBoxNombre.Text =  mayor.ToString();
 
 
