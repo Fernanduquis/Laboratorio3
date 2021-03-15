@@ -9,11 +9,11 @@ namespace Laboratorio3
     class Propietarios
     {
         string dpi;
-        string nombre;
+        string nombrePropietario;
         string apellido;
 
         public string DPI { get => dpi; set => dpi = value; }
-        public string Nombre { get => nombre; set => nombre = value; }
-        public string Apellido { get => apellido; set => apellido = value; }
+         public string Apellido { get => apellido; set => apellido = value; }
+        public string NombrePropietario { get => nombrePropietario; set => nombrePropietario = value; }
     }
 }

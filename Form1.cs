@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,6 +15,9 @@ namespace Laboratorio3
     {
         List<Propiedades> propiedades = new List<Propiedades>();
         List<Propietarios> propietarios = new List<Propietarios>();
+        List<Reporte> reportes = new List<Reporte>();
+
+
 
 
         public Form1()
@@ -25,6 +29,62 @@ namespace Laboratorio3
         {
 
 
+            if (File.Exists(@"..\..\propietarios.txt"))
+            {
+                FileStream stream = new FileStream(@"..\..\propietarios.txt", FileMode.Open, FileAccess.Read);
+                StreamReader reader = new StreamReader(stream);
+
+                while (reader.Peek() > -1)
+                {
+                    Propietarios persona = new Propietarios();
+                    persona.DPI = reader.ReadLine();
+                    persona.NombrePropietario = reader.ReadLine();
+                    persona.Apellido = reader.ReadLine();
+                    
+                    propietarios.Add(persona);
+                }
+                reader.Close();
+            }
+
+            if (File.Exists(@"..\..\propiedades.txt"))
+            {
+                FileStream stream = new FileStream(@"..\..\propiedades.txt", FileMode.Open, FileAccess.Read);
+                StreamReader reader = new StreamReader(stream);
+
+                while (reader.Peek() > -1)
+                {
+                    Propiedades Casas = new Propiedades();
+                    Casas.NumeroCasa1 = Convert.ToInt32(reader.ReadLine());
+                    Casas.DPIDueño1 = reader.ReadLine();
+                    Casas.CuotaMantenimiento1 = Convert.ToInt32(reader.ReadLine());
+
+                    propiedades.Add(Casas);
+                }
+                reader.Close();
+            }
+        }
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Reporte reporte = new Reporte();
+            
+            foreach (var propiedad in propiedades)
+            {
+                reporte.NumeroCasa1 = propiedad.NumeroCasa1;
+                reporte.CuotaMantenimiento1 = propiedad.CuotaMantenimiento1;
+
+                reportes.Add(reporte);
+            }
+
+            foreach(var propietario in propietarios)
+            {
+               reporte.Nombre = propietario.NombrePropietario;
+                reporte.Apellido = propietario.Apellido;
+                reportes.Add(reporte);
+            }
+
+            dataGridViewReporte.DataSource = null;
+            dataGridViewReporte.DataSource = reportes;
+            dataGridViewReporte.Refresh();
         }
     }
 }
