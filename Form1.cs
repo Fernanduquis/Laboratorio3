@@ -55,7 +55,7 @@ namespace Laboratorio3
                 {
                     Propiedades Casas = new Propiedades();
                     Casas.NumeroCasa1 = Convert.ToInt32(reader.ReadLine());
-                    Casas.DPIDueño1 = reader.ReadLine();
+                    Casas.DPIDueño1 = Convert.ToInt32(reader.ReadLine());
                     Casas.CuotaMantenimiento1 = Convert.ToInt32(reader.ReadLine());
 
                     propiedades.Add(Casas);
@@ -82,9 +82,22 @@ namespace Laboratorio3
                 reportes.Add(reporte);
             }
 
+           
             dataGridViewReporte.DataSource = null;
             dataGridViewReporte.DataSource = reportes;
             dataGridViewReporte.Refresh();
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            // int mayor = propietarios.Max(x => x.NombrePropietario);
+            int mayor = propiedades.Max(k => k.NumeroCasa1);
+            
+
+            textBoxNombre.Text =  mayor.ToString();
+
+
+
         }
     }
 }

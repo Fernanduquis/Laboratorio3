@@ -9,11 +9,11 @@ namespace Laboratorio3
     class Propiedades
     {
         int NumeroCasa;
-        string DPIDueño;
+       int DPIDueño;
         int CuotaMantenimiento;
 
         public int NumeroCasa1 { get => NumeroCasa; set => NumeroCasa = value; }
-        public string DPIDueño1 { get => DPIDueño; set => DPIDueño = value; }
+        public int DPIDueño1 { get => DPIDueño; set => DPIDueño = value; }
         public int CuotaMantenimiento1 { get => CuotaMantenimiento; set => CuotaMantenimiento = value; }
     }
 }
